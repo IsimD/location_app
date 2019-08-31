@@ -3,4 +3,3 @@ module API
     mount API::V1::Base
   end
 end
-

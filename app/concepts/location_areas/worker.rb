@@ -1,5 +1,5 @@
 module LocationAreas
- class Worker
+  class Worker
     include Sidekiq::Worker
 
     def perform(test)

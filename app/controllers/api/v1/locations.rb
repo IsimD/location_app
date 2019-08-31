@@ -6,7 +6,7 @@ module API
       resources :locations do
         desc "Test"
         get do
-          { message: 'hello' }
+          { message: "hello" }
         end
       end
     end
