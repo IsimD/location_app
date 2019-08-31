@@ -10,6 +10,7 @@ gem "puma", "~> 3.11"
 gem "rack-cors", "1.0.3"
 gem "rails", "~> 6.0.0"
 gem "rubocop", "0.74.0"
+gem "sidekiq", "6.0.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
