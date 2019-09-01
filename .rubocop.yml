@@ -30,11 +30,16 @@ Naming/AccessorMethodName:
 Documentation:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - "app/controllers/api/**/*.rb"
+    - "spec/**/*.rb"
+
 AllCops:
   Exclude:
-    - 'config/**/*'
-    - 'bin/**/*'
-    - 'db/migrate/*'
-    - 'db/schema.rb'
-    - 'db/seeds.rb'
-    - 'db/seeds/*'
+    - "config/**/*"
+    - "bin/**/*"
+    - "db/migrate/*"
+    - "db/schema.rb"
+    - "db/seeds.rb"
+    - "db/seeds/*"
