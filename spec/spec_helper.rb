@@ -21,10 +21,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   config.before :each do
+    Sidekiq::Worker.clear_all
     DatabaseCleaner.start
   end
 
   config.after :each do
     DatabaseCleaner.clean
+    Sidekiq::Worker.clear_all
   end
 end
