@@ -1,5 +1,6 @@
 require "simplecov"
 require "factory_bot_rails"
+require "webmock/rspec"
 
 SimpleCov.start
 

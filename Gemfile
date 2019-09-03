@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.4"
 
 gem "bootsnap",     ">= 1.1.0", require: false
+gem "dotenv-rails", "2.7.5"
+gem "faraday",      "0.15.4"
 gem "grape",        "1.2.4"
 gem "pg",           ">= 0.18", "< 2.0"
 gem "puma",         "3.12.1"
@@ -23,6 +25,7 @@ group :test do
   gem "factory_bot_rails", "5.0.2"
   gem "rspec-rails",       "3.8.2"
   gem "simplecov",         "0.14.0"
+  gem "webmock",           "3.7.1"
 end
 
 group :development do

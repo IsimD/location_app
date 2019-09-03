@@ -19,4 +19,32 @@ RSpec.describe Locations::Repository::Commands do
       expect(subject).to be_a_kind_of(Location)
     end
   end
+
+  describe "#update_location" do
+    subject { described_class.update_location(location: location, params: params) }
+    let!(:location) { FactoryBot.create(:location, coordinates: "[]") }
+    let(:params) { { coordinates: [12.0, 12.23] } }
+
+    it "update location" do
+      expect { subject }.to change { location.reload.coordinates }.from([]).to([12.0, 12.23])
+    end
+
+    it "return true" do
+      expect(subject).to be_a_kind_of(TrueClass)
+    end
+  end
+
+  describe "#add_error_to_location" do
+    subject { described_class.add_error_to_location(location: location, message: message) }
+    let!(:location) { FactoryBot.create(:location) }
+    let(:message) { "Some info about failure" }
+
+    it "create new error for location" do
+      expect { subject }.to change { location.reload.location_error }.from(nil).to(LocationError)
+    end
+
+    it "return location error" do
+      expect(subject).to be_a_kind_of(LocationError)
+    end
+  end
 end

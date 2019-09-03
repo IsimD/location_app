@@ -7,6 +7,14 @@ module Locations
           location.save!
           location
         end
+
+        def update_location(location:, params:)
+          location.update!(params)
+        end
+
+        def add_error_to_location(location:, message:)
+          location.create_location_error!(message: message)
+        end
       end
     end
   end
