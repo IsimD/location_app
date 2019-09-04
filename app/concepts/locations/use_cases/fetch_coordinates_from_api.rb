@@ -55,7 +55,7 @@ module Locations
         raise NoResultsError unless @parsed_response["status"] == "OK"
 
         location = @parsed_response["results"][0]["geometry"]["location"]
-        [location["lat"], location["lng"]]
+        [location["lng"], location["lat"]]
       end
 
       def address_query

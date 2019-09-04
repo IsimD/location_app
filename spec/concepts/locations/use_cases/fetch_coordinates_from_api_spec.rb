@@ -17,7 +17,7 @@ RSpec.describe Locations::UseCases::FetchCoordinatesFromApi do
     end
 
     it "update location coordinates" do
-      expect { subject }.to change { location.reload.coordinates }.from([]).to([33.333, 44.444])
+      expect { subject }.to change { location.reload.coordinates }.from([]).to([44.444, 33.333])
     end
   end
 
