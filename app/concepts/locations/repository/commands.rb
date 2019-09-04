@@ -3,9 +3,7 @@ module Locations
     class Commands
       class << self
         def create_location_for_user(user:, name:)
-          location = Location.new(user: user, name: name)
-          location.save!
-          location
+          Location.create!(user: user, name: name)
         end
 
         def update_location(location:, params:)
