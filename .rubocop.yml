@@ -20,6 +20,8 @@ Style/TrailingCommaInArrayLiteral:
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 
+Lint/RedundantWithObject:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -30,9 +32,38 @@ Naming/AccessorMethodName:
 Documentation:
   Enabled: false
 
+Style/NumericPredicate:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Naming/VariableNumber:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
+Naming/UncommunicativeMethodParamName:
+  Exclude:
+    - "app/services/geometry/*.rb"
+
 Metrics/BlockLength:
   Exclude:
     - "app/controllers/api/**/*.rb"
+    - "app/services/geometry/*.rb"
     - "spec/**/*.rb"
 
 AllCops:

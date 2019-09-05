@@ -5,9 +5,14 @@ module API
 
       resources :locations do
         desc "Check location"
-        get ":id" do
-          current_user.locations.find(params[:id])
-          { message: "hello" }
+        params do
+          requires :id, type: Integer
+        end
+        get "/:id" do
+          ::Locations::UseCases::CheckLocation.call(user: current_user, id: params[:id])
+        rescue ::Locations::UseCases::CheckLocation::CheckLocationError => e
+          status 422
+          { message: e.message }
         end
 
         desc "Create new location by name"
