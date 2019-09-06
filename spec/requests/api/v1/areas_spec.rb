@@ -5,7 +5,44 @@ RSpec.describe API::V1::Areas, type: :request, sidekiq: true do
   let!(:default_user) { FactoryBot.create(:user, default_user: true) }
 
   describe "GET /areas" do
-   
+    subject { get "/api/v1/areas" }
+
+    context "user with area" do
+      let!(:area) { FactoryBot.create(:area, user: default_user) }
+      let(:expected_response) do
+        [
+          {
+            coordinates: area.coordinates,
+          },
+        ].as_json
+      end
+
+      before { subject }
+      it "reponse has correct values" do
+        response_json = JSON.parse(response.body)
+        expect(response_json).to eq(expected_response)
+      end
+
+      it "has status 200" do
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context "user without area" do
+      subject { get "/api/v1/areas" }
+      let(:expected_response) { [] }
+
+      it "reponse has correct values" do
+        subject
+        response_json = JSON.parse(response.body)
+        expect(response_json).to eq(expected_response)
+      end
+
+      it "has status 200" do
+        subject
+        expect(response.status).to eq(200)
+      end
+    end
   end
 
   describe "POST /areas" do
@@ -133,7 +170,7 @@ RSpec.describe API::V1::Areas, type: :request, sidekiq: true do
       end
     end
 
-    context "user without any areas" do
+    context "user with area" do
       let!(:existing_area) { FactoryBot.create(:area, user: default_user) }
       it "delete existing area for the user and create 2 new areas" do
         expect { subject }.to change { Area.count }.by(1)

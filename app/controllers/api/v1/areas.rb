@@ -6,6 +6,8 @@ module API
       resources :areas do
         desc "Return current areas"
         get "" do
+          areas = ::Areas::Repository::Queries.new(user: current_user).find_user_areas
+          areas.map { |area| ::Areas::Representers::Basic.call(area: area) }
         end
 
         desc "Create new area"
