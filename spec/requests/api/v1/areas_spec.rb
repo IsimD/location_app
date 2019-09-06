@@ -4,7 +4,10 @@ RSpec.describe API::V1::Areas, type: :request, sidekiq: true do
   let(:area_representer) { %w[id] }
   let!(:default_user) { FactoryBot.create(:user, default_user: true) }
 
-  describe "GET /areas"
+  describe "GET /areas" do
+   
+  end
+
   describe "POST /areas" do
     let(:params) do
       {

@@ -1,2 +1,0 @@
-class LocationArea < ApplicationRecord
-end
